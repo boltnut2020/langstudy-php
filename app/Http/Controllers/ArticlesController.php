@@ -85,7 +85,8 @@ class ArticlesController extends Controller
         //
         $article = Article::find($id);
         $categories = Category::with('childrenRecursive')->whereNull('parent_id')->get();
-        return view('articles.edit', ['article' => $article, 'categories' => $categories]);
+        $articleCategory = ArticleCategory::select('category_id')->where('article_id', $id)->pluck('category_id')->toArray();
+        return view('articles.edit', ['article' => $article, 'categories' => $categories, 'articleCategory' => $articleCategory]);
     }
 
     /**
@@ -106,6 +107,7 @@ class ArticlesController extends Controller
         $article->content = $request->content;
         // 保存
         $article->save();
+        
         if ($request->has('categories')) {
             $articleCategory = new ArticleCategory;
             $articleCategory->bulkUpdate($article->id, $request->categories);
