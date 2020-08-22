@@ -1,24 +1,21 @@
-{{-- layoutsフォルダのapplication.blade.phpを継承 --}}
-@extends('layouts.application')
+@extends('layouts.admin')
 
-{{-- @yield('title')にテンプレートごとの値を代入 --}}
 @section('title', '新規作成')
 
-{{-- application.blade.phpの@yield('content')に以下のレイアウトを代入 --}}
 @section('content')
   <form action="/videos" method="post">
-    {{-- 以下を入れないとエラーになる --}}
     {{ csrf_field() }}
-    <div>
+    <div class="form-group">
       <label for="title">タイトル</label>
-      <input type="text" name="title" placeholder="動画のタイトルを入れる">
+      <input class="form-control" type="text" name="title" placeholder="動画のタイトルを入れる">
+      <small id="titleHelp" class="form-text text-muted">動画タイトルを入力します</small>
     </div>
-    <div>
+    <div class="form-group">
       <label for="body">動画ID</label>
-      <input type="text" name="video_id" placeholder="動画のIDを入れる">
+      <input class="form-control" type="text" name="video_id" placeholder="動画のIDを入れる">
     </div>
     <div>
-      <input type="submit" value="送信">
+      <input class="btn btn-primary" type="submit" value="送信">
     </div>
   </form>
 @endsection

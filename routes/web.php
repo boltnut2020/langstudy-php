@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::resource('videos', 'VideosController');
+Route::resource('categories', 'CategoriesController');
 
 Route::get('/sample', function () {
     return view('sample');

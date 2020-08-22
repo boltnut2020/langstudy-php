@@ -1,5 +1,5 @@
 {{-- layoutsフォルダのapplication.blade.phpを継承 --}}
-@extends('layouts.application')
+@extends('layouts.admin')
 
 {{-- @yield('title')にテンプレートごとの値を代入 --}}
 @section('title', '記事詳細')

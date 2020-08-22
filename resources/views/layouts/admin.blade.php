@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -75,7 +76,20 @@
         <main class="py-4">
             <div class="container">
                 <div class="row">
-                    @yield('content')
+                    <div class="col-4">
+                        <div class="list-group">
+                          <a href="/home" class="list-group-item list-group-item-action active">
+                            Cras justo odio
+                          </a>
+                          <a href="/videos" class="list-group-item list-group-item-action">Videos</a>
+                          <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+                          <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                          <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Vestibulum at eros</a>
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        @yield('content')
+                    </div>
                 </div>
             </div>
         </main>
