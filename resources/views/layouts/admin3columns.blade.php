@@ -76,7 +76,7 @@
         <main class="py-4">
             <div class="container">
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-4">
                         <div class="list-group">
                           <a href="/home" class="list-group-item list-group-item-action active">
                             Home
@@ -86,7 +86,7 @@
                           <a href="/categories" class="list-group-item list-group-item-action">Categories</a>
                         </div>
                     </div>
-                    <div class="col-9">
+                    <div class="col-8">
                         @yield('content')
                     </div>
                 </div>

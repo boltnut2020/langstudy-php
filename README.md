@@ -21,6 +21,6 @@ create your mysql database, then set your databasename in .env
 $ php artisan migrate
 $ php artisan serv
 ```
-open browzer
+open browser
 http://127.0.0.1:8000
 

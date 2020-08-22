@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use App\Category;
+use App\ArticleCategory;
 
 class ArticlesController extends Controller
 {
@@ -28,7 +30,8 @@ class ArticlesController extends Controller
     public function create()
     {
         //
-        return view('articles.create');
+        $categories = Category::with('childrenRecursive')->whereNull('parent_id')->get();
+        return view('articles.create', ['categories' => $categories]);
     }
 
     /**
@@ -44,8 +47,14 @@ class ArticlesController extends Controller
         $article = new Article;
         // $requestにformからのデータが格納されているので、以下のようにそれぞれ代入する
         $article->title = $request->title;
+        $article->description = $request->description;
+        $article->content = $request->content;
         // 保存
         $article->save();
+        if ($request->has('categories')) {
+            $articleCategory = new ArticleCategory;
+            $articleCategory->bulkUpdate($article->id, $request->categories);
+        }
         // 保存後 一覧ページへリダイレクト
         return redirect('/articles');
     }
@@ -75,7 +84,8 @@ class ArticlesController extends Controller
     {
         //
         $article = Article::find($id);
-        return view('articles.edit', ['article' => $article]);
+        $categories = Category::with('childrenRecursive')->whereNull('parent_id')->get();
+        return view('articles.edit', ['article' => $article, 'categories' => $categories]);
     }
 
     /**
@@ -92,8 +102,14 @@ class ArticlesController extends Controller
         $article = Article::find($id);
         // editで編集されたデータを$articleにそれぞれ代入する
         $article->title = $request->title;
+        $article->description = $request->description;
+        $article->content = $request->content;
         // 保存
         $article->save();
+        if ($request->has('categories')) {
+            $articleCategory = new ArticleCategory;
+            $articleCategory->bulkUpdate($article->id, $request->categories);
+        }
         // 詳細ページへリダイレクト
         return redirect("/articles/".$id);
     }
