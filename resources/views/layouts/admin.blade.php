@@ -79,12 +79,10 @@
                     <div class="col-4">
                         <div class="list-group">
                           <a href="/home" class="list-group-item list-group-item-action active">
-                            Cras justo odio
+                            Home
                           </a>
                           <a href="/videos" class="list-group-item list-group-item-action">Videos</a>
-                          <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-                          <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-                          <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Vestibulum at eros</a>
+                          <a href="/categories" class="list-group-item list-group-item-action">Categories</a>
                         </div>
                     </div>
                     <div class="col-8">
