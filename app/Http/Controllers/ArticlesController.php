@@ -36,7 +36,8 @@ class ArticlesController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
+
+     *ly
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -49,6 +50,7 @@ class ArticlesController extends Controller
         $article->title = $request->title;
         $article->description = $request->description;
         $article->content = $request->content;
+        $article->display = $request->dispaly;
         // 保存
         $article->save();
         if ($request->has('categories')) {
@@ -58,7 +60,6 @@ class ArticlesController extends Controller
         // 保存後 一覧ページへリダイレクト
         return redirect('/articles');
     }
-
     /**
      * Display the specified resource.
      *
@@ -105,6 +106,7 @@ class ArticlesController extends Controller
         $article->title = $request->title;
         $article->description = $request->description;
         $article->content = $request->content;
+        $article->display = $request->display;
         // 保存
         $article->save();
         

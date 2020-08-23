@@ -22,7 +22,11 @@
       <textarea class="form-control"  name="content" placeholder="本文を入力してください">{{ $article->content }}</textarea>
       <small id="contentHelp" class="form-text text-muted">記事の本文を入力します</small>
     </div>
-
+    <div class="form-group">
+      <label for="content">Dispaly</label>
+      <input type="checkbox" name="display" value="1" {{ ($article->display === 1) ? "checked" : "" }}>
+      <small id="contentHelp" class="form-text text-muted">表示</small>
+    </div>
     <div>
       <input type="hidden" name="_method" value="patch">
       <input type="submit" value="更新">

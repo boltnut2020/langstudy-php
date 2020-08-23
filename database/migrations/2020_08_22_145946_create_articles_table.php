@@ -18,7 +18,7 @@ class CreateArticlesTable extends Migration
             $table->string("title");
             $table->text("description")->nullable();
             $table->text("content")->nullable();
-            $table->boolean("dispaly")->default(false);
+            $table->boolean("display")->default(false);
             $table->timestamps();
         });
     }
