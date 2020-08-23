@@ -76,17 +76,17 @@
         <main class="py-4">
             <div class="container">
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-md-3 col-sm-12">
                         <div class="list-group">
-                          <a href="/home" class="list-group-item list-group-item-action active">
+                          <a href="/home" class="list-group-item list-group-item-action {{ (Request::segment(1) == "home") ? "active" : "" }}">
                             Home
                           </a>
-                          <a href="/articles" class="list-group-item list-group-item-action">Articles</a>
-                          <a href="/videos" class="list-group-item list-group-item-action">Videos</a>
-                          <a href="/categories" class="list-group-item list-group-item-action">Categories</a>
+                          <a href="/articles" class="list-group-item list-group-item-action {{ (Request::segment(1) == "articles") ? "active" : "" }}">Articles</a>
+                          <a href="/videos" class="list-group-item list-group-item-action {{ (Request::segment(1) == "videos") ? "active" : "" }}">Videos</a>
+                          <a href="/categories" class="list-group-item list-group-item-action {{ (Request::segment(1) == "categories") ? "active" : "" }}">Categories</a>
                         </div>
                     </div>
-                    <div class="col-9">
+                    <div class="col-md-9 col-sm-12">
                         @yield('content')
                     </div>
                 </div>

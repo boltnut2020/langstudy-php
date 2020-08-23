@@ -19,7 +19,7 @@
     </div>
     <div class="form-group">
       <label for="content">Content</label>
-      <input class="form-control" type="text" name="content" placeholder="本文を入力してください" value="{{ $article->content }}">
+      <textarea class="form-control"  name="content" placeholder="本文を入力してください">{{ $article->content }}</textarea>
       <small id="contentHelp" class="form-text text-muted">記事の本文を入力します</small>
     </div>
 

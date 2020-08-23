@@ -78,7 +78,7 @@
                 <div class="row">
                     <div class="col-4">
                         <div class="list-group">
-                          <a href="/home" class="list-group-item list-group-item-action active">
+                          <a href="/home" class="list-group-item list-group-item-action {{ (Request::segment(1) == "home") ? "active" : "" }}">
                             Home
                           </a>
                           <a href="/articles" class="list-group-item list-group-item-action">Articles</a>

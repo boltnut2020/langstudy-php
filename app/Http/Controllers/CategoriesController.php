@@ -28,7 +28,9 @@ class CategoriesController extends Controller
     public function create()
     {
         //
-        return view('categories.create');
+        $categories = Category::where("parent_id", null)->pluck("title","id");
+		$selectedId = null;
+        return view('categories.create', ["categories" => $categories, 'selectedId' => $selectedId]);
     }
 
     /**
@@ -45,6 +47,7 @@ class CategoriesController extends Controller
         // $requestにformからのデータが格納されているので、以下のようにそれぞれ代入する
         $category->title = $request->title;
         $category->slug = $request->slug;
+        $category->parent_id = $request->parent_id;
         // 保存
         $category->save();
 
@@ -77,7 +80,9 @@ class CategoriesController extends Controller
     {
         //
         $category = Category::find($id);
-        return view('categories.edit', ['category' => $category]);
+        $categories = Category::where("parent_id", null)->pluck("title","id");
+		$selectedId = $category->parent_id;
+        return view('categories.edit', ['category' => $category, 'categories' => $categories, 'selectedId' => $selectedId]);
     }
 
     /**
@@ -93,6 +98,7 @@ class CategoriesController extends Controller
         $category = Category::find($id);
         $category->title = $request->title;
         $category->slug = $request->slug;
+        $category->parent_id = $request->parent_id;
         $category->save();
         return redirect("/categories/".$id);
     }
