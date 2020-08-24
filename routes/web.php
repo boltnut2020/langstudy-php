@@ -13,18 +13,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
+Route::group([
+    'middleware' => 'auth.role',
+    'prefix' => '',
+    'role' => 'admin',
+],function (){
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('articles', 'ArticlesController');
+    Route::resource('videos', 'VideosController');
+    Route::resource('categories', 'CategoriesController');
+});
+
+Route::group([
+    'middleware' => 'auth.role',
+    'prefix' => '',
+    'role' => 'writer',
+],function (){
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('articles', 'ArticlesController');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('articles', 'ArticlesController');
-Route::resource('videos', 'VideosController');
-Route::resource('categories', 'CategoriesController');
 
-Route::get('/sample', function () {
-    return view('sample');
-});
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');

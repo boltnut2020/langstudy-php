@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
+        "amir/laravel-permission": "^1.0",
         "doctrine/dbal": "^2.10",
         "dog-ears/crud-d-scaffold": "^4.0",
         "fideloper/proxy": "^4.2",

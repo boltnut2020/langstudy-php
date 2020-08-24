@@ -36,8 +36,7 @@ class ArticlesController extends Controller
 
     /**
      * Store a newly created resource in storage.
-
-     *ly
+     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
