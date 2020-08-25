@@ -20,7 +20,6 @@ create your mysql database, then set your databasename in .env
 ```
 $ php artisan migrate
 $ php artisan db:seed
-$ php artisan permissions:generate
 $ php artisan serv
 ```
 open browser
