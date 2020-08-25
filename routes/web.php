@@ -15,11 +15,18 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('articles', 'ArticlesController');
-Route::resource('videos', 'VideosController');
-Route::resource('categories', 'CategoriesController');
+Route::group(['middleware' => ['role:admin|writer']], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('articles', 'ArticlesController');
+});
 
+Route::group(['middleware' => ['role:admin']], function () {
+    Route::resource('videos', 'VideosController');
+    Route::resource('categories', 'CategoriesController');
+});
+
+Route::group(['middleware' => ['role:writer']], function () {
+});
 
 Route::get('/', function () {
     return view('welcome');
