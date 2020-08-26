@@ -81,9 +81,13 @@
                           <a href="/home" class="list-group-item list-group-item-action {{ (Request::segment(1) == "home") ? "active" : "" }}">
                             Home
                           </a>
+                          @role('admin')
+                          <a href="/users" class="list-group-item list-group-item-action {{ (Request::segment(1) == "users") ? "active" : "" }}">Users</a>
+                          @endrole
+                          @hasanyrole('admin|writer')
                           <a href="/articles" class="list-group-item list-group-item-action {{ (Request::segment(1) == "articles") ? "active" : "" }}">Articles</a>
-                          <a href="/videos" class="list-group-item list-group-item-action {{ (Request::segment(1) == "videos") ? "active" : "" }}">Videos</a>
                           <a href="/categories" class="list-group-item list-group-item-action {{ (Request::segment(1) == "categories") ? "active" : "" }}">Categories</a>
+                          @endrole
                         </div>
                     </div>
                     <div class="col-md-9 col-sm-12">

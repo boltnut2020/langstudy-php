@@ -17,20 +17,10 @@ class PermissionsSeeder extends Seeder
         //
 		// Reset cached roles and permissions
         app()[PermissionRegistrar::class]->forgetCachedPermissions();	
-        // create permissions
-        //Permission::create(['name' => 'articles.*']);
-        //Permission::create(['name' => 'categories.*']);
-        //Permission::create(['name' => 'videos.*']);
 
 		$roleAdmin = Role::create(['name' => 'admin']);
-		//$roleAdmin->givePermissionTo('articles.*');
-		//$roleAdmin->givePermissionTo('categories.*');
-		//$roleAdmin->givePermissionTo('videos.*');
-
-
 		$roleWriter = Role::create(['name' => 'writer']);
-		// $roleWriter->givePermissionTo('articles.*');
-
+		$roleGuest = Role::create(['name' => 'guest']);
 		// create demo users
         $user = Factory(App\User::class)->create([
             'name' => 'Admin',
@@ -45,6 +35,13 @@ class PermissionsSeeder extends Seeder
             'password' => Hash::make('password'),
         ]);
         $user->assignRole($roleWriter);
+
+        $user = Factory(App\User::class)->create([
+            'name' => 'Guest',
+            'email' => 'guest@example.com',
+            'password' => Hash::make('password'),
+        ]);
+        $user->assignRole($roleGuest);
 
     }
 }

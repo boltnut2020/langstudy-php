@@ -15,14 +15,19 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::group(['middleware' => ['role:admin|writer']], function () {
+
+Route::group(['middleware' => ['role:admin|writer|guest']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
+});
+
+Route::group(['middleware' => ['role:admin|writer']], function () {
     Route::resource('articles', 'ArticlesController');
+    Route::resource('videos', 'VideosController');
+    Route::resource('categories', 'CategoriesController');
 });
 
 Route::group(['middleware' => ['role:admin']], function () {
-    Route::resource('videos', 'VideosController');
-    Route::resource('categories', 'CategoriesController');
+    Route::resource('users', 'UsersController');
 });
 
 Route::group(['middleware' => ['role:writer']], function () {
