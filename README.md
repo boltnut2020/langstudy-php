@@ -1,5 +1,5 @@
 # langstudy-php
-laravel + vue + auth
+laravel + spatie Laravel-permission 
 
 in your working directory
 
