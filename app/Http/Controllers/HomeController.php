@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\User;
+use Auth;
 class HomeController extends Controller
 {
     /**
@@ -24,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        //$user = User::find(Sentry::getUser()->id);
+        $user = User::find(Auth::user()->id);
+        return view('home', ['user' => $user]);
     }
 }

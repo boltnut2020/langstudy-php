@@ -22,7 +22,6 @@ Route::group(['middleware' => ['role:admin|writer|guest']], function () {
 
 Route::group(['middleware' => ['role:admin|writer']], function () {
     Route::resource('articles', 'ArticlesController');
-    Route::resource('videos', 'VideosController');
     Route::resource('categories', 'CategoriesController');
 });
 
