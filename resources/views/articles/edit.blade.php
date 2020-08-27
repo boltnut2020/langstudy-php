@@ -33,7 +33,6 @@
     </div>
   </div>
   <div class="col-3">
-	
     <ul class="list-group">
     @foreach ($categories as $category)
         <li class="list-group-item">
@@ -51,6 +50,6 @@
     @endforeach
     </ul>
   </div>
-
-  </div>
+</div>
 </form>
+@endsection

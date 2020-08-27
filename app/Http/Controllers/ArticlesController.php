@@ -53,8 +53,7 @@ class ArticlesController extends Controller
         // 保存
         $article->save();
         if ($request->has('categories')) {
-            $articleCategory = new ArticleCategory;
-            $articleCategory->bulkUpdate($article->id, $request->categories);
+            $article->categories()->sync($request->categories);
         }
         // 保存後 一覧ページへリダイレクト
         return redirect('/articles');
@@ -85,7 +84,7 @@ class ArticlesController extends Controller
         //
         $article = Article::find($id);
         $categories = Category::with('childrenRecursive')->whereNull('parent_id')->get();
-        $articleCategory = ArticleCategory::select('category_id')->where('article_id', $id)->pluck('category_id')->toArray();
+        $articleCategory = $article->categories()->where('article_id', $id)->pluck('category_id')->toArray();
         return view('articles.edit', ['article' => $article, 'categories' => $categories, 'articleCategory' => $articleCategory]);
     }
 
@@ -110,8 +109,7 @@ class ArticlesController extends Controller
         $article->save();
         
         if ($request->has('categories')) {
-            $articleCategory = new ArticleCategory;
-            $articleCategory->bulkUpdate($article->id, $request->categories);
+            $article->categories()->sync($request->categories);
         }
         // 詳細ページへリダイレクト
         return redirect("/articles/".$id);
