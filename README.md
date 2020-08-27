@@ -25,3 +25,11 @@ $ php artisan serv
 open browser
 http://127.0.0.1:8000
 
+You can login following user
+```
+admin@example.com/password
+
+please change, if you use this setting without local
+```
+
+Role and Permission  set in routes/web.php

@@ -29,19 +29,19 @@ class PermissionsSeeder extends Seeder
         ]);
         $user->assignRole($roleAdmin);
 
-        $user = Factory(App\User::class)->create([
-            'name' => 'Writer',
-            'email' => 'writer@example.com',
-            'password' => Hash::make('password'),
-        ]);
-        $user->assignRole($roleWriter);
-
-        $user = Factory(App\User::class)->create([
-            'name' => 'Guest',
-            'email' => 'guest@example.com',
-            'password' => Hash::make('password'),
-        ]);
-        $user->assignRole($roleGuest);
+//        $user = Factory(App\User::class)->create([
+//            'name' => 'Writer',
+//            'email' => 'writer@example.com',
+//            'password' => Hash::make('password'),
+//        ]);
+//        $user->assignRole($roleWriter);
+//
+//        $user = Factory(App\User::class)->create([
+//            'name' => 'Guest',
+//            'email' => 'guest@example.com',
+//            'password' => Hash::make('password'),
+//        ]);
+//        $user->assignRole($roleGuest);
 
     }
 }
