@@ -27,6 +27,7 @@ Route::group(['middleware' => ['role:admin|writer']], function () {
 
 Route::group(['middleware' => ['role:admin']], function () {
     Route::resource('users', 'UsersController');
+    Route::resource('roles', 'RolesController');
 });
 
 Route::group(['middleware' => ['role:writer']], function () {

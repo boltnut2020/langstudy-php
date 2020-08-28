@@ -84,6 +84,7 @@
                           </a>
                           @role('admin')
                           <a href="/users" class="list-group-item list-group-item-action {{ (Request::segment(1) == "users") ? "active" : "" }}">Users</a>
+                          <a href="/roles" class="list-group-item list-group-item-action {{ (Request::segment(1) == "roles") ? "active" : "" }}">Roles</a>
                           @endrole
                           @hasanyrole('admin|writer')
                           <a href="/articles" class="list-group-item list-group-item-action {{ (Request::segment(1) == "articles") ? "active" : "" }}">Articles</a>
