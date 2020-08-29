@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Category;
+use App\Tag;
 
-class CategoriesController extends Controller
+class TagsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class CategoriesController extends Controller
     public function index()
     {
         //
-        $categories = Category::all();
+        $tags = Tag::all();
         // return $videos;
-        return view('categories.index', ['categories' => $categories]);
+        return view('tags.index', ['tags' => $tags]);
     }
 
     /**
@@ -28,9 +28,7 @@ class CategoriesController extends Controller
     public function create()
     {
         //
-        $categories = Category::where("parent_id", null)->pluck("name","id");
-		$selectedId = null;
-        return view('categories.create', ["categories" => $categories, 'selectedId' => $selectedId]);
+        return view('tags.create');
     }
 
     /**
@@ -43,16 +41,14 @@ class CategoriesController extends Controller
     {
         //
         // モデルからインスタンスを生成
-        $category = new Category;
+        $tag = new Tag;
         // $requestにformからのデータが格納されているので、以下のようにそれぞれ代入する
-        $category->name = $request->name;
-        $category->slug = $request->slug;
-        $category->parent_id = $request->parent_id;
+        $tag->name = $request->name;
         // 保存
-        $category->save();
+        $tag->save();
 
         // 保存後 一覧ページへリダイレクト
-        return redirect('/categories');
+        return redirect('/tags');
     }
 
     /**
@@ -61,14 +57,14 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-        // 引数で受け取った$idを元にfindでレコードを取得
-        $category = Category::find($id);
-        // viewにデータを渡す
-        return view('categories.show', ['category' => $category]);
-    }
+//    public function show($id)
+//    {
+//        //
+//        // 引数で受け取った$idを元にfindでレコードを取得
+//        $tag = Tags::find($id);
+//        // viewにデータを渡す
+//        return view('tags.show', ['tag' => $tag]);
+//    }
 
     /**
      * Show the form for editing the specified resource.
@@ -79,10 +75,8 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         //
-        $category = Category::find($id);
-        $categories = Category::where("parent_id", null)->pluck("name","id");
-		$selectedId = $category->parent_id;
-        return view('categories.edit', ['category' => $category, 'categories' => $categories, 'selectedId' => $selectedId]);
+        $tag = Tag::find($id);
+        return view('tags.edit', ['tag' => $tag]);
     }
 
     /**
@@ -95,12 +89,10 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $category = Category::find($id);
-        $category->name = $request->name;
-        $category->slug = $request->slug;
-        $category->parent_id = $request->parent_id;
-        $category->save();
-        return redirect("/categories/".$id);
+        $tag = Tag::find($id);
+        $tag->name = $request->name;
+        $tag->save();
+        return redirect("/tags");
     }
 
     /**
@@ -113,10 +105,10 @@ class CategoriesController extends Controller
     {
         //
         // idを元にレコードを検索
-       $category = Category::find($id);
+       $tag = Tag::find($id);
        // 削除
-       $category->delete();
+       $tag->delete();
        // 一覧にリダイレクト
-       return redirect('/categories');        
+       return redirect('/tags');        
     }
 }

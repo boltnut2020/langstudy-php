@@ -88,8 +88,18 @@
                           @endrole
                           @hasanyrole('admin|writer')
                           <a href="/articles" class="list-group-item list-group-item-action {{ (Request::segment(1) == "articles") ? "active" : "" }}">Articles</a>
+                          <a href="/memos" class="list-group-item list-group-item-action {{ (Request::segment(1) == "memos") ? "active" : "" }}">Memos</a>
                           <a href="/categories" class="list-group-item list-group-item-action {{ (Request::segment(1) == "categories") ? "active" : "" }}">Categories</a>
+                          <a href="/tags" class="list-group-item list-group-item-action {{ (Request::segment(1) == "tags") ? "active" : "" }}">Tags</a>
                           @endrole
+                        </div>
+
+                        <div class="list-group mt-1">
+                          <a class="list-group-item list-group-item-action" href="{{ route('logout') }}"
+                              onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                               {{ __('Logout') }}
+                          </a>
                         </div>
                     </div>
                     <div class="col-md-9 col-sm-12">

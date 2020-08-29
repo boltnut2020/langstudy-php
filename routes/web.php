@@ -23,6 +23,8 @@ Route::group(['middleware' => ['role:admin|writer|guest']], function () {
 Route::group(['middleware' => ['role:admin|writer']], function () {
     Route::resource('articles', 'ArticlesController');
     Route::resource('categories', 'CategoriesController');
+    Route::resource('memos', 'MemosController');
+    Route::resource('tags', 'TagsController');
 });
 
 Route::group(['middleware' => ['role:admin']], function () {
