@@ -8,6 +8,7 @@
     <div class="form-group">
       <label for="title">メモ</label>
       <textarea class="form-control" type="text" name="memo" placeholder="メモを入力してください">{{ $memo->memo }}</textarea>
+      <input class="form-control" type="text" name="tag" placeholder="タグを入力してください" value="{{ implode(",", $memo->tags()->pluck('name')->toArray()) }}">
       <small id="titleHelp" class="form-text text-muted">カテゴリのタイトルを入力します</small>
     </div>
     <div>

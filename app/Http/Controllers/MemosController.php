@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Memo;
+use App\Tag;
 
 class MemosController extends Controller
 {
@@ -47,6 +48,11 @@ class MemosController extends Controller
         // 保存
         $memo->save();
 
+        if ( $request->has('tag') ) {
+            $tagIds = Tag::bulkFirstOrCreate($request->tag);
+            $memo->tags()->sync($tagIds);
+        }
+        
         // 保存後 一覧ページへリダイレクト
         return redirect('/memos');
     }
@@ -76,6 +82,7 @@ class MemosController extends Controller
     {
         //
         $memo = Memo::find($id);
+        $tags = $memo->tags()->pluck('name')->toArray();
         return view('memos.edit', ['memo' => $memo]);
     }
 
@@ -92,6 +99,10 @@ class MemosController extends Controller
         $memo = Memo::find($id);
         $memo->memo = $request->memo;
         $memo->save();
+        if ( $request->has('tag') ) {
+            $tagIds = Tag::bulkFirstOrCreate($request->tag);
+            $memo->tags()->sync($tagIds);
+        }
         return redirect("/memos");
     }
 
