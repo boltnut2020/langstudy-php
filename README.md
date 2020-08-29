@@ -1,8 +1,10 @@
 # langstudy-php
 laravel + spatie Laravel-permission 
 
-in your working directory
+![screen_shot_langstudy_php](https://user-images.githubusercontent.com/68484099/91629966-c5073800-e9f7-11ea-8cf3-fc27ef946cc0.jpg)
 
+## Setup
+in your working directory
 ```
 git clone https://github.com/boltnut2020/langstudy-php.git
 $ composer install
