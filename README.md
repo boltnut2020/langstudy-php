@@ -1,6 +1,9 @@
 # langstudy-php
 laravel + spatie Laravel-permission 
 
+Heroku用に更新リポジトリを以下に移行しました。
+https://github.com/boltnut2020/idea-stores
+
 ![screen_shot_langstudy_php](https://user-images.githubusercontent.com/68484099/91629966-c5073800-e9f7-11ea-8cf3-fc27ef946cc0.jpg)
 
 ## Setup
